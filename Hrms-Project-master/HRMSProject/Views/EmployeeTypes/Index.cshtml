@@ -1,0 +1,55 @@
+﻿@model IEnumerable<HRMSProject.Models.VmEmployeeType>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+<div class="container-fluid">
+    <br />
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
+    </p>
+    <table class="table text-center">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeTypeId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeTypeName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OverTimeAllowed)
+                </th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeTypeId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeTypeName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OverTimeAllowed)
+                    </td>
+                    <td>
+                        <a asp-controller="EmployeeTypes" asp-action="Edit" asp-route-id="@item.EmployeeTypeId" class="btn btn-primary">Edit</a>
+                        <a class="btn btn-success" asp-controller="EmployeeTypes" asp-action="Details" asp-route-id="@item.EmployeeTypeId">Details</a>
+                        <a class="btn btn-danger" asp-controller="EmployeeTypes" asp-action="Delete" onclick="myFunction()" asp-route-id="@item.EmployeeTypeId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@section scripts{ 
+    <script>
+        function myFunction() {
+            alert("Are you sure you want to delete this?");
+        };
+    </script>
+}

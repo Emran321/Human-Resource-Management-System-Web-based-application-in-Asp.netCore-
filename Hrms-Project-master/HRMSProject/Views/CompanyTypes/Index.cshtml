@@ -1,0 +1,43 @@
+﻿@model IEnumerable<HRMSProject.Models.VmCompanyType>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container-fluid">
+    <br />
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
+    </p>
+    <table class="table text-center">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CompanyTypeId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CompanyTypeName)
+                </th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CompanyTypeId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CompanyTypeName)
+                    </td>
+                    <td>
+                        <a asp-controller="CompanyTypes" asp-action="Edit" asp-route-id="@item.CompanyTypeId" class="btn btn-primary">Edit</a>
+                        <a class="btn btn-success" asp-controller="CompanyTypes" asp-action="Details" asp-route-id="@item.CompanyTypeId">Details</a>
+                        <a class="btn btn-danger" asp-controller="CompanyTypes" asp-action="Delete" onclick="myFunction()" asp-route-id="@item.CompanyTypeId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

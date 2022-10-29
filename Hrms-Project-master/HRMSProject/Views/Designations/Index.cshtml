@@ -1,0 +1,49 @@
+﻿@model IEnumerable<HRMSProject.Models.VmDesignation>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+<div class="container-fluid">
+    <br />
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
+    </p>
+    <table class="table text-center">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.DesignationId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DesignationName)
+                </th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DesignationId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DesignationName)
+                    </td>
+                    <td>
+                        <a asp-controller="Designations" asp-action="Edit" asp-route-id="@item.DesignationId" class="btn btn-primary">Edit</a>
+                        <a class="btn btn-success" asp-controller="Designations" asp-action="Details" asp-route-id="@item.DesignationId">Details</a>
+                        <a class="btn btn-danger" asp-controller="Designations" asp-action="Delete" onclick="myFunction()" asp-route-id="@item.DesignationId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@section scripts{
+    <script>
+        function myFunction() {
+            alert("Are you sure you want to delete this?");
+        };
+    </script>
+}

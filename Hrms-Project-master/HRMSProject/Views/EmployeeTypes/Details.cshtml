@@ -1,0 +1,36 @@
+﻿@model HRMSProject.Models.VmEmployeeType
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="container">
+    <h1>Details</h1>
+    <div>
+        <h4>Employee Type</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EmployeeTypeId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EmployeeTypeId)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EmployeeTypeName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.EmployeeTypeName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.OverTimeAllowed)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.OverTimeAllowed)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-controller="EmployeeTypes" asp-action="Edit" asp-route-id="@Model.EmployeeTypeId" class="btn btn-primary">Edit</a>
+        <a asp-action="Index" class="btn btn-danger">Back to List</a>
+    </div>
+</div>

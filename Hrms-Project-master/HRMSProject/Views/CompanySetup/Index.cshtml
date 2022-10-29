@@ -1,0 +1,64 @@
+﻿@model IEnumerable<HRMSProject.Models.VmCompnaySetup>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container-fluid">
+    <br />
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CompanyId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CompanyName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+ 
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CompanyTypeId)
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CompanyId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CompanyName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+       
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CompanyTypeId)
+                    </td>
+                    <td>
+                        <a asp-controller="CompanySetup" asp-action="Edit" asp-route-id="@item.CompanyId" class="btn btn-primary">Edit</a>
+                        <a class="btn btn-success" asp-controller="CompanySetup" asp-action="Details" asp-route-id="@item.CompanyId">Details</a>
+                        <a class="btn btn-danger" asp-controller="CompanySetup" asp-action="Delete" onclick="myFunction()" asp-route-id="@item.CompanyId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
